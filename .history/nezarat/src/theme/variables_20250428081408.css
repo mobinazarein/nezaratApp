@@ -1,0 +1,10 @@
+/* For information on how to create your own theme, please see:
+http://ionicframework.com/docs/theming/ */
+@import "../assets/styles/_fonts.scss";
+:root {
+  --ion-font-family: "IRANSans", sans-serif;
+}
+
+body {
+  font-family: "IRANSans", sans-serif;
+}

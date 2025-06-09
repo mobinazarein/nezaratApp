@@ -1,0 +1,5 @@
+{
+  "webDir": "dist",
+  "buildCommand": "npm run build",
+  "devServerCommand": "npm run dev"
+}
