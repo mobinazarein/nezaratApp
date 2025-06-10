@@ -40,7 +40,7 @@
                 </div>
 
                 <ion-button expand="block" style="--background-color: #039BE5; height: 58px; --border-radius: 90px"
-                    @click="$router.push('/home')">
+                    @click="goToHomePage">
                     ورود به سامانه
                 </ion-button>
             </ion-card>
@@ -53,8 +53,18 @@ import loginImage from '@/assets/LoginImage.png'
 import { IonButton, IonIcon, IonInput } from '@ionic/vue'
 import { eye, lockClosed, personOutline } from 'ionicons/icons'
 import { ref } from 'vue'
+import { useIonRouter } from '@ionic/vue';
+import { useRouter } from 'vue-router';
 
-const checked = ref(false)
+const router = useRouter();
+const ionRouter = useIonRouter();
+const checked = ref(false);
+const goToHomePage=()=>{
+
+    router.push('/home').then(() => {
+    window.location.reload();
+  });
+}
 </script>
 
 <style scoped>

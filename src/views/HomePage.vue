@@ -112,6 +112,10 @@ import DataTable from '@/components/DataTable.vue';
 
 </script>
 <style scoped>
+.card-container {
+  position: relative;
+  z-index: 10000; 
+}
 .user-info {
   display: flex;
   align-items: center;
@@ -249,14 +253,14 @@ ion-segment-button {
   }
 
   .mobileDiv {
-    z-index: 1000;
+  z-index: 10 !important;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     margin: 15px;
     direction: rtl;
-    width: 396px;
+    width: 373px;
     height: 62px;
     border-radius: 47px;
     box-shadow: 10px 10px 32px #00000026;

@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "@ionic/vue-router";
 import { RouteRecordRaw } from "vue-router";
 import HomePage from "../views/HomePage.vue";
-import loginPage from "@/views/loginPage.vue";
+import LoginPage from "@/views/LoginPage.vue";
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -14,14 +15,19 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/login",
-    name: "login",
-    component: loginPage,
+    name: "Login",
+    component: LoginPage,
   },
 ];
-
+// router/index.js
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+  linkActiveClass: "ion-activated",
+  linkExactActiveClass: "ion-activated",
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }
+  }
 });
 
 export default router;

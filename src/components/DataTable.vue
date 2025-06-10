@@ -562,6 +562,7 @@ const closeDialog = () => {
 
   .mobile-view {
     display: block;
+      z-index: 0 !important; 
   }
 
   .filter-bar {
@@ -569,7 +570,7 @@ const closeDialog = () => {
   }
 
   .pagination {
-    flex-direction: column;
+    flex-direction: row !important;
     gap: 16px;
   }
 }
@@ -678,6 +679,8 @@ const closeDialog = () => {
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+    z-index: 10000;
 }
 
 .card {
@@ -699,6 +702,8 @@ const closeDialog = () => {
   font-weight: bold;
   font-size: 16px;
   color: #333;
+  z-index: 1 !important;
+
 }
 
 .card-date {
@@ -709,6 +714,9 @@ const closeDialog = () => {
   padding: 4px 8px;
   display: flex;
   align-items: center;
+  z-index: 1 !important;
+  white-space: nowrap;
+
 }
 
 .subsidiary-row {
