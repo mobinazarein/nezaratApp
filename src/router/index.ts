@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "@ionic/vue-router";
 import { RouteRecordRaw } from "vue-router";
 import HomePage from "../views/HomePage.vue";
 import LoginPage from "../views/loginPage.vue";
+import DataTable from "@/components/DataTable.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -18,6 +19,13 @@ const routes: Array<RouteRecordRaw> = [
     name: "Login",
     component: LoginPage,
   },
+
+  {
+  path: '/:id/print-format',
+  name: 'PrintFormat',
+  component: DataTable,
+}
+
 ];
 // router/index.js
 const router = createRouter({

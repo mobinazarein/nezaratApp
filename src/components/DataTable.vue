@@ -40,9 +40,10 @@
               <ion-button fill="clear" size="small" color="primary" @click="editItem(item)">
                 <img src="../assets/arrow.png" />
               </ion-button>
-              <ion-button fill="clear" size="small" color="primary" @click="editItem(item)">
-                <img src="../assets/Clipboard.svg" />
-              </ion-button>
+             <ion-button fill="clear" size="small" color="primary" @click="openPrintDialog(item)">
+  <img src="../assets/Clipboard.svg" />
+</ion-button>
+
             </template>
             <template v-if="col.value === 'drillingNumber'">
               {{ item[col.value] }}
@@ -65,6 +66,16 @@
       </tbody>
     </table>
   </div>
+  <ion-modal :is-open="printDialogOpen" @didDismiss="closePrintDialog">
+  <ion-content>
+    <div style="padding: 20px; background: white; min-height: 100vh;">
+
+      <ion-button @click="printPage">پرینت</ion-button>
+      <ion-button color="danger" @click="closePrintDialog">بستن</ion-button>
+    </div>
+  </ion-content>
+</ion-modal>
+
   <!-- Mobile Card View -->
   <div class="mobile-view">
     <div class="card-container">
@@ -276,6 +287,32 @@ import { ref, computed } from 'vue';
 import { IonPage, IonContent, IonCard, IonCardContent, IonButton, IonCheckbox, IonSearchbar, IonSegment, IonSegmentButton, IonLabel, IonIcon } from '@ionic/vue';
 import api from '@/plugins/axios';
 import { onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+
+const router = useRouter();
+const route = useRoute();
+
+const printDialogOpen = ref(false);
+const selectedItemForPrint = ref(null);
+
+const openPrintDialog = (item) => {
+  selectedItemForPrint.value = item;
+  printDialogOpen.value = true;
+
+  router.push({ path: `/${item.code}/print-format` });
+};
+
+const closePrintDialog = () => {
+  printDialogOpen.value = false;
+  selectedItemForPrint.value = null;
+router.back();
+
+};
+
+const printPage = () => {
+  window.print();
+};
+
 async function me() {
     const res = await api.get(`https://dig.mashhad.ir/dig/main/app/lastDarkhastNew/0/1?page=1`)
     if (res) {
@@ -438,6 +475,18 @@ const closeDialog = () => {
   fileSizeError.value = false;
   uploadedFile.value = null;
 };
+onMounted(() => {
+  const idFromRoute = route.params.id;
+
+  if (route.fullPath.endsWith('/print-format') && idFromRoute) {
+    const item = Items.value.find(i => i.code == idFromRoute);
+
+    if (item) {
+      openPrintDialog(item);
+    }
+  }
+});
+
 </script>
 <style scoped>
 .main {
