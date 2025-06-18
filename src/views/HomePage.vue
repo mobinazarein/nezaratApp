@@ -1,80 +1,91 @@
 <template>
   <ion-page>
-    <ion-content class="">
+    <ion-content>
+      <!-- موبایل هدر -->
       <div class="showOnMobile mobileDiv d-flex align-center justify-space-between" style="margin-top:10px">
         <div style="display: flex; align-items: center; gap: 8px; margin:15px !important;" class="showOnMobile">
           <div
-            style="width: 40px; height: 40px; background-color: #A2845E; text-align: center; color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+            style="width: 40px; height: 40px; background-color: #A2845E; color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
             م‌ا
           </div>
-          <div style="display: flex; flex-direction: column;" class="showOnMobile">
-            <p style="font-size: 15px; font-weight: 500; margin: 0;" class="showOnMobile">مدیر ارشد</p>
-            <p style="font-size: 12px; color: #767E8A; margin: 0;" class="showOnMobile">admin</p>
+          <div style="display: flex; flex-direction: column;">
+            <p style="font-size: 15px; font-weight: 500; margin: 0;">مدیر ارشد</p>
+            <p style="font-size: 12px; color: #767E8A; margin: 0;">admin</p>
           </div>
         </div>
         <div class="phone showOnMobile">
-          <p class="showOnMobile">09130537010</p>
-          <img src="../assets/chevron-left.png" style="margin-right: 10px;" class="showOnMobile" />
+          <p>09130537010</p>
+          <img src="../assets/chevron-left.png" style="margin-right: 10px;" />
         </div>
       </div>
+
+      <!-- دسکتاپ هدر -->
       <div style="display: flex; align-items: center; justify-content: space-between;" class="hideOnMobile">
-        <div style="display: flex; align-items: center; gap: 8px;" class="hideOnMobile">
-          <img src="../assets/chevron-left.png" style="margin-right: 10px;" class="hideOnMobile" />
-          <div style="display: flex; flex-direction: column;" class="hideOnMobile">
-            <p style="font-size: 15px; font-weight: 500; margin: 0;" class="hideOnMobile">مدیر ارشد</p>
-            <p style="font-size: 12px; color: #767E8A; margin: 0;" class="hideOnMobile">admin</p>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <img src="../assets/chevron-left.png" style="margin-right: 10px;" />
+          <div style="display: flex; flex-direction: column;">
+            <p style="font-size: 15px; font-weight: 500; margin: 0;">مدیر ارشد</p>
+            <p style="font-size: 12px; color: #767E8A; margin: 0;">admin</p>
           </div>
           <div
-            style="width: 40px; height: 40px; background-color: #A2845E; text-align: center; color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+            style="width: 40px; height: 40px; background-color: #A2845E; color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
             م‌ا
           </div>
         </div>
+
+        <!-- تب‌ها -->
         <div class="filter-tabs hideOnMobile">
-          <ion-segment value="all" @ionChange="segmentChanged" style="background-color: #FFFFFF;" class="hideOnMobile">
-            <ion-segment-button value="all" class="hideOnMobile">
-              <div style="display: flex;align-items: center;" class="hideOnMobile">
-                <ion-label style="margin-left: 3px;" class="hideOnMobile">همه </ion-label>
-                <ion-label class="hideOnMobile"
-                  style="background-color: #A2845E66;color: #A2845E;width: 41px;height: 31px;display: flex;align-items: center;justify-content: center;border-radius: 40px;font-size:   14px;margin-right: 5px;">
-                  334</ion-label>
+          <ion-segment :value="selectedTab" @ionChange="segmentChanged" style="background-color: #FFFFFF;">
+            <ion-segment-button value="all">
+              <div style="display: flex; align-items: center;">
+                <ion-label style="margin-left: 3px;">همه</ion-label>
+                <ion-label style="background-color: #A2845E66; color: #A2845E; width: 41px; height: 31px;
+                                  display: flex; align-items: center; justify-content: center;
+                                  border-radius: 40px; font-size: 14px; margin-right: 5px;">334</ion-label>
               </div>
             </ion-segment-button>
-            <ion-segment-button value="cartable" class="hideOnMobile">
-              <div style="display: flex;align-items: center;" class="hideOnMobile">
-                <ion-label style="margin-left: 3px;" class="hideOnMobile">کارتابل</ion-label>
-                <ion-label class="hideOnMobile"
-                  style="background-color: #A2845E66;color: #A2845E;width: 41px;height: 31px;display: flex;align-items: center;justify-content: center;border-radius: 40px;font-size:   14px;margin-left: 5px;">
-                  334</ion-label>
+            <ion-segment-button value="cartable">
+              <div style="display: flex; align-items: center;">
+                <ion-label style="margin-left: 3px;">کارتابل</ion-label>
+                <ion-label style="background-color: #A2845E66; color: #A2845E; width: 41px; height: 31px;
+                                  display: flex; align-items: center; justify-content: center;
+                                  border-radius: 40px; font-size: 14px; margin-left: 5px;">334</ion-label>
               </div>
             </ion-segment-button>
-            <ion-segment-button value="supervised" class="hideOnMobile">
-              <div style="display: flex;align-items: center;" class="hideOnMobile">
-                <ion-label style="margin-left: 3px;" class="hideOnMobile">نظارت شده</ion-label>
-                <ion-label class="hideOnMobile"
-                  style="background-color: #A2845E66;color: #A2845E;width: 41px;height: 31px;display: flex;align-items: center;justify-content: center;border-radius: 40px;font-size:   14px;margin-right: 5px;">
-                  334</ion-label>
+            <ion-segment-button value="supervised">
+              <div style="display: flex; align-items: center;">
+                <ion-label style="margin-left: 3px;">نظارت شده</ion-label>
+                <ion-label style="background-color: #A2845E66; color: #A2845E; width: 41px; height: 31px;
+                                  display: flex; align-items: center; justify-content: center;
+                                  border-radius: 40px; font-size: 14px; margin-right: 5px;">334</ion-label>
               </div>
             </ion-segment-button>
-            <ion-segment-button value="unsupervised" class="hideOnMobile">
-              <div style="display: flex;align-items: center;" class="hideOnMobile">
-                <ion-label style="margin-left: 3px;" class="hideOnMobile">نظارت نشده</ion-label>
-                <ion-label class="hideOnMobile"
-                  style="background-color: #A2845E66;color: #A2845E;width: 41px;height: 31px;display: flex;align-items: center;justify-content: center;border-radius: 40px;font-size:   14px;margin-right: 5px;margin-left: 5px;">
-                  334</ion-label>
+            <ion-segment-button value="unsupervised">
+              <div style="display: flex; align-items: center;">
+                <ion-label style="margin-left: 3px;">نظارت نشده</ion-label>
+                <ion-label style="background-color: #A2845E66; color: #A2845E; width: 41px; height: 31px;
+                                  display: flex; align-items: center; justify-content: center;
+                                  border-radius: 40px; font-size: 14px; margin: 0 5px;">334</ion-label>
               </div>
             </ion-segment-button>
           </ion-segment>
         </div>
+
         <div class="user-info">
           <div class="role">سامانه جامع حفاری</div>
           <img src="../assets/logo.png" />
         </div>
       </div>
+
       <ion-card style="background-color: #F8F6F7; padding: 24px;" class="hideOnMobile">
-        <ion-card-content class="hideOnMobile">
-          <DataTable class="hideOnMobile" />
+        <ion-card-content>
+          <DataTable v-if="selectedTab === 'all'" :items="[...cartable, ...supervised, ...unsupervised]" />
+          <DataTable v-else-if="selectedTab === 'cartable'" :items="cartable" />
+          <DataTable v-else-if="selectedTab === 'supervised'" :items="supervised" />
+          <DataTable v-else-if="selectedTab === 'unsupervised'" :items="unsupervised" />
         </ion-card-content>
       </ion-card>
+
       <div class="mobile-header showOnMobile">
         <div class="title">
           <img src="../assets/manage.svg" />
@@ -84,13 +95,17 @@
           <img src="../assets/magnify.png" />
         </div>
       </div>
+
       <div class="page-content showOnMobile">
-        <DataTable />
+        <DataTable v-if="selectedTab === 'all'" :items="[...cartable, ...supervised, ...unsupervised]" />
+        <DataTable v-else-if="selectedTab === 'cartable'" :items="cartable" />
+        <DataTable v-else-if="selectedTab === 'supervised'" :items="supervised" />
+        <DataTable v-else-if="selectedTab === 'unsupervised'" :items="unsupervised" />
       </div>
+
       <div class="mobile-footer showOnMobile">
         <div class="footer-item">
-          <!-- <ion-icon :name="Pallet"></ion-icon> -->
-          <img src="../assets/palette.svg" style="color:#656D82 !important" />
+          <img src="../assets/palette.svg" />
           <span>کارتابل</span>
         </div>
         <div class="footer-item">
@@ -102,25 +117,69 @@
           <span>نظارت نشده</span>
         </div>
       </div>
-
     </ion-content>
   </ion-page>
 </template>
+
 <script setup>
-// import Pallet from '@/assets/pallet.vue';
 import DataTable from '@/components/DataTable.vue';
-import api from '@/plugins/axios';
-import { onMounted } from 'vue';
-async function me() {
-    const res = await api.get(`main/app/lastDarkhastNew/0/1?page=1`)
-    if (res) {
-        console.log(res);
+import axios from 'axios';
+import { ref, onMounted } from 'vue';
+
+const selectedTab = ref('all');
+
+const cartable = ref([]);
+const supervised = ref([]);
+const unsupervised = ref([]);
+
+const getCartable = async (page = 1) => {
+  try {
+    const res = await axios.post(`https://dig.mashhad.ir/dig/main/app/lastDarkhastNew/0/0?page=${page}`);
+    if (res.data.success) {
+      cartable.value = res.data.data;
     }
-}
-onMounted(()=>{
-  me()
-})
+  } catch {
+    cartable.value = [];
+  }
+};
+
+const getSupervised = async (page = 1) => {
+  try {
+    const res = await axios.post(`https://dig.mashhad.ir/dig/main/app/lastDarkhastNew/1?page=${page}`);
+    if (res.data.success) {
+      supervised.value = res.data.data;
+    }
+  } catch {
+    supervised.value = [];
+  }
+};
+
+const getUnsupervised = async (page = 1) => {
+  try {
+    const res = await axios.post(`https://dig.mashhad.ir/dig/main/app/lastDarkhastNew/0/1?page=${page}`);
+    if (res.data.success) {
+      unsupervised.value = res.data.data;
+    }
+  } catch {
+    unsupervised.value = [];
+  }
+};
+
+const getAll = async () => {
+  await getCartable();
+  await getSupervised();
+  await getUnsupervised();
+};
+
+const segmentChanged = (event) => {
+  selectedTab.value = event.detail.value;
+};
+
+onMounted(() => {
+  getAll();
+});
 </script>
+
 <style scoped>
 .card-container {
   position: relative;

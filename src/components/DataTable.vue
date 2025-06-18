@@ -70,26 +70,26 @@
     <div class="card-container">
       <div class="card" v-for="item in sortedItems" :key="item.id">
         <div class="title-row">
-          <div class="card-title">{{ item.title }}</div>
-          <div class="card-date">اتمام 23 فروردین 1403</div>
+          <div class="card-title">{{ item.haffariTitle }}</div>
+          <div class="card-date">اتمام   {{ item.endDate }}</div>
         </div>
 
         <div class="subsidiary-row">
           <span class="subsidiary-label">تابعه:</span>
-          <span class="subsidiary-value">{{ item.subsidiary }}</span>
+          <span class="subsidiary-value">{{ item.tabee }}</span>
         </div>
 
         <div class="details-row">
           <div class="detail-item">
             <span class="detail-label">حفاری:</span>
-            <span class="detail-value">{{ item.drillingNumber }}</span>
+            <span class="detail-value">{{ item.code }}</span>
           </div>
           <div class="detail-item">
             <span class="detail-label">ارگان:</span>
-            <span class="detail-value">{{ item.organization }}</span>
+            <span class="detail-value">{{ item.organ }}</span>
           </div>
           <div class="detail-item">
-            <span class="detail-value">{{ item.count }}</span>
+            <span class="detail-value">{{ item.counter }}</span>
             <span class="detail-label">کنترل انجام شد</span>
           </div>
         </div>

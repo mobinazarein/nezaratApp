@@ -32,7 +32,7 @@
                 </ion-input>
 
                 <div class="bottom-options">
-                    <p class="forgot-password">کلمه عبور خودرا فراموش کرده‌اید؟</p>
+                    <!-- <p class="forgot-password">کلمه عبور خودرا فراموش کرده‌اید؟</p> -->
                     <ion-item lines="none" class="custom-checkbox" style="direction: rtl">
                         <ion-label style="font-size: 14px; white-space: nowrap">مرا به خاطر بسپار</ion-label>
                         <ion-checkbox slot="start" v-model="checked" />
@@ -127,8 +127,8 @@ const goToHomePage=()=>{
 }
 
 .logo {
-    width: 113.86px;
-    height: 113.86px;
+    width: 68.86px;
+    height: 68.86px;
     margin: 0;
 }
 
@@ -170,8 +170,8 @@ const goToHomePage=()=>{
 
 .bottom-options {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: end;
+    justify-content: end;
     margin: 10px 0;
 }
 
@@ -220,10 +220,7 @@ ion-input {
     }
 
     .login-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
+       display: none;
     }
 
     .login-card {
