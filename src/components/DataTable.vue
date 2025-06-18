@@ -274,17 +274,29 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { IonPage, IonContent, IonCard, IonCardContent, IonButton, IonCheckbox, IonSearchbar, IonSegment, IonSegmentButton, IonLabel, IonIcon } from '@ionic/vue';
+import api from '@/plugins/axios';
+import { onMounted } from 'vue';
+async function me() {
+    const res = await api.get(`https://dig.mashhad.ir/dig/main/app/lastDarkhastNew/0/1?page=1`)
+    if (res) {
+        console.log(res);
+        sortedItems.value=res.data
+    }
+}
+onMounted(()=>{
+  me()
+})
 const dialogItems = [
   { question: 'تابلو مشخصات پروژه نصب بوده است؟', text: 'حفاری مشاهده شده در حال حفر میباشد تا زمان پایان نتیجه اعلام میگردد' },
   { question: 'تابلو مشخصات پروژه نصب بوده است؟' },
 ]
 const columns = [
   { title: 'عملیات', value: 'operation' },
-  { title: 'عنوان', value: 'title' },
-  { title: 'تعداد', value: 'count' },
-  { title: 'نام تابعه', value: 'subsidiary', width: '330px' },
-  { title: 'ارگان', value: 'organization' },
-  { title: 'شماره حفاری', value: 'drillingNumber', sortable: true },
+  { title: 'عنوان', value: 'haffariTitle' },
+  { title: 'تعداد', value: 'counter' },
+  { title: 'نام تابعه', value: 'tabee', width: '330px' },
+  { title: 'ارگان', value: 'organ' },
+  { title: 'شماره حفاری', value: 'code', sortable: true },
 ];
 
 const Items = ref([

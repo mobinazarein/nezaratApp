@@ -109,7 +109,17 @@
 <script setup>
 // import Pallet from '@/assets/pallet.vue';
 import DataTable from '@/components/DataTable.vue';
-
+import api from '@/plugins/axios';
+import { onMounted } from 'vue';
+async function me() {
+    const res = await api.get(`main/app/lastDarkhastNew/0/1?page=1`)
+    if (res) {
+        console.log(res);
+    }
+}
+onMounted(()=>{
+  me()
+})
 </script>
 <style scoped>
 .card-container {
